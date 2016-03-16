@@ -6,20 +6,32 @@ import static org.junit.Assert.*;
 
 
 public class RectangleTest {
-    private Rectangle rectangle;
+    private Rectangle rectangleWithIntegerValue;
+    private Rectangle rectangleWithDoubleValue;
 
     @Before
     public void setUp() throws Exception {
-        rectangle = new Rectangle(10, 5);
+        rectangleWithIntegerValue = new Rectangle(10, 5);
+        rectangleWithDoubleValue = new Rectangle(10.5, 5.3);
+
     }
 
     @Test
-    public void testCalculateAreaShouldGiveAreaOfARectangle() throws Exception {
-        assertEquals(rectangle.calculateArea(),50);
+    public void testCalculateAreaShouldGiveAreaOfARectangleWhenSidesAreInteger() throws Exception {
+        assertEquals(rectangleWithIntegerValue.calculateArea(),50,.5);
     }
 
     @Test
-    public void testCalculatePerimeterShouldGivePerimeterOfARectangle() throws Exception {
-        assertEquals(rectangle.calculatePerimiter(),30);
+    public void testCalculatePerimeterShouldGivePerimeterOfARectangleWhenSidesAreInteger() throws Exception {
+        assertEquals(rectangleWithIntegerValue.calculatePerimiter(),30,.5);
+    }
+    @Test
+    public void testCalculateAreaShouldGiveAreaOfARectangleWhenSidesAreDouble() throws Exception {
+        assertEquals(rectangleWithDoubleValue.calculateArea(),55.65,.5);
+    }
+
+    @Test
+    public void testCalculatePerimeterShouldGivePerimeterOfARectangleWhenSidesAreDouble() throws Exception {
+        assertEquals(rectangleWithDoubleValue.calculatePerimiter(),31.6,.5);
     }
 }
