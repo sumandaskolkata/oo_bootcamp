@@ -1,12 +1,12 @@
 /*
 job of Rectangle
-    - all operation related to rectangle behaviour depending on length and width should be in this class.
+    - all operations related to rectangle behaviour depending on length and width should be in this class.
 */
 public class Rectangle {
     private final double height;
     private final double width;
 
-    private Rectangle(double height, double width) {
+    protected Rectangle(double height, double width) {
         this.height = height;
         this.width = width;
     }
