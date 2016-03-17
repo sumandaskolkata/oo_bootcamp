@@ -1,37 +1,38 @@
 
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.*;
 
 
 public class RectangleTest {
-    private Rectangle rectangleWithIntegerValue;
-    private Rectangle rectangleWithDoubleValue;
+    private Rectangle rectangle;
 
     @Before
-    public void setUp() throws Exception {
-        rectangleWithIntegerValue = new Rectangle(10, 5);
-        rectangleWithDoubleValue = new Rectangle(10.5, 5.3);
+    public void setUp() throws NonPositiveNumberException {
+        rectangle = Rectangle.createRectangle(10, 5);
 
     }
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
 
     @Test
-    public void testCalculateAreaShouldGiveAreaOfARectangleWhenSidesAreInteger() throws Exception {
-        assertEquals(rectangleWithIntegerValue.calculateArea(),50,.5);
-    }
-
-    @Test
-    public void testCalculatePerimeterShouldGivePerimeterOfARectangleWhenSidesAreInteger() throws Exception {
-        assertEquals(rectangleWithIntegerValue.calculatePerimiter(),30,.5);
-    }
-    @Test
-    public void testCalculateAreaShouldGiveAreaOfARectangleWhenSidesAreDouble() throws Exception {
-        assertEquals(rectangleWithDoubleValue.calculateArea(),55.65,.5);
+    public void calculateAreaShouldGiveAreaOfARectangleWhenSidesAreInteger(){
+        assertEquals(rectangle.calculateArea(), 50, .0);
     }
 
     @Test
-    public void testCalculatePerimeterShouldGivePerimeterOfARectangleWhenSidesAreDouble() throws Exception {
-        assertEquals(rectangleWithDoubleValue.calculatePerimiter(),31.6,.5);
+    public void calculatePerimeterShouldGivePerimeterOfARectangleWhenSidesAreInteger(){
+        assertEquals(rectangle.calculatePerimeter(), 30, .0);
     }
+
+    @Test
+    public void createRectangleShouldThrowNonPositiveNumberExceptionWhenRectangleWidthIsNegative() throws NonPositiveNumberException {
+        thrown.expectMessage("expected positive values for rectangle side but found length 3.0 width -6.0");
+        thrown.expect(NonPositiveNumberException.class);
+        Rectangle.createRectangle(3, -6);
+    }
+
 }
