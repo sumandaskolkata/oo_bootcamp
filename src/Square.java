@@ -1,3 +1,5 @@
+import exception.NonPositiveNumberException;
+
 /*
 Job of the class
 -All operations related to square behaviours dependent on side .

@@ -1,3 +1,5 @@
+import exception.NonPositiveNumberException;
+
 /*
 job of Rectangle
     - all operations related to rectangle behaviour depending on length and width should be in this class.
