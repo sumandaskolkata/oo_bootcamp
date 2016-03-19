@@ -1,4 +1,4 @@
-package compareLength;
+package exception;
 
 public class NotValidLengthException extends Throwable {
     public NotValidLengthException() {

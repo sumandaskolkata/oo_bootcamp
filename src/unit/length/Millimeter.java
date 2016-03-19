@@ -2,13 +2,18 @@
     Job of the class
         millimeter should have all behaviour and operation of length
  */
-package compareLength;
+package unit.length;
 
 
-public class Millimeter extends Length{
+import exception.NotValidLengthException;
+
+public class Millimeter implements LengthUnit {
+
+    private final double value;
 
     private Millimeter(double value) {
-        super(value);
+
+        this.value = value;
     }
 
 
@@ -16,9 +21,12 @@ public class Millimeter extends Length{
         if(value<0){
             throw new NotValidLengthException();
         }
-        double inCm = value/10;
-        return new Millimeter(inCm);
+        return new Millimeter(value);
     }
 
+    @Override
+    public double convertToBaseUnit() {
+        return value/25;
+    }
 }
 
